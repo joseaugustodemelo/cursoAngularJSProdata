@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+
+    <!-- -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    <!-- -->
+
+    <!-- inicio import externos-->
+    <script src="node_modules/angular/angular.js"></script>
+
+    <!-- fim import externos-->
+
+    <script src="app/config/pd-app.module.js"></script>
+    <script src="app/controller/index.controller.js"></script>
+
+
+
+</head>
+<body ng-app="pdCurso" class="container">
+
+<div ng-controller="IndexController">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">Formulário Teste</div>
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Nome</label>
+                        <input type="text"
+                               class="form-control"
+                               ng-model="entidade.nome">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Sobrenome</label>
+                        <input type="text"
+                               class="form-control"
+                               ng-model="entidade.sobrenome">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Sexo</label>
+                        <select type="text"
+                                class="form-control"
+                                ng-model="entidade.sexo">
+                            <option value="M">Masculino</option>
+                            <option value="F">Feminino</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="panel-footer">
+            <button class="btn btn-primary"
+                    ng-click="salvar()">Salvar</button>
+            <button class="btn btn-warning"
+                    ng-click="limpar">Limpar</button>
+            <button class="btn btn-danger">Excluir</button>
+        </div>
+
+        <table class="table table-striped">
+            <tr>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>Sexo</th>
+                <th>Ações</th>
+            </tr>
+            <tr ng-repeat="entidade in listEntidade">
+                <td ng-bind="entidade.nome"></td>
+                <td ng-bind="entidade.sobrenome"></td>
+                <td ng-bind="entidade.sexo"></td>
+                <td>
+                    <button class="btn btn-primary"
+                            ng-click="editar(entidade)">
+                        Editar
+                    </button>
+
+                    <button class="btn btn-danger"
+                            ng-click="excluir($index)">
+                        Excluir
+                    </button>
+
+                    <button class="btn btn-danger"
+                            ng-click="excluirEntidade(entidade)">
+                        Excluir
+                    </button>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
